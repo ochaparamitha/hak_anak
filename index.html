@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pendidikan Pancasila - SD Negeri Kuin Utara 7 Banjarmasin</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#4EA8DE',
+                            softBlue: '#E0F2FE',
+                            yellow: '#FFD166',
+                            softYellow: '#FEF08A',
+                            green: '#06D6A0',
+                            softGreen: '#D1FAE5',
+                            pink: '#EF476F',
+                            softPink: '#FCE7F3',
+                            purple: '#118AB2',
+                            bgLight: '#F0F9FF',
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F0F9FF;
+            -webkit-tap-highlight-color: transparent;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+        .bounce-subtle {
+            animation: bounceSubtle 2.5s infinite ease-in-out;
+        }
+        @keyframes bounceSubtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        /* Canvas Line Container */
+        #match-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="text-slate-800 bg-sky-50/50 min-h-screen flex flex-col justify-between selection:bg-brand-softBlue selection:text-brand-purple">
+
+    <!-- Top Header -->
+    <header class="bg-gradient-to-r from-sky-500 via-teal-500 to-emerald-500 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <button onclick="showHome()" class="w-10 h-10 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-2xl flex items-center justify-center text-white text-lg font-bold transition-transform active:scale-90" title="Kembali ke Beranda">
+                    <i class="fa-solid fa-house"></i>
+                </button>
+                <div>
+                    <h1 class="text-base font-bold leading-tight drop-shadow-sm font-heading">Pendidikan Pancasila</h1>
+                    <p class="text-[11px] text-sky-100 font-medium">Kelas 6 • Bab 3: Hak Anak</p>
+                </div>
+            </div>
+            <span class="bg-white/20 text-[10px] px-2.5 py-1 rounded-full font-bold border border-white/30 backdrop-blur-sm text-white text-right leading-none max-w-[120px]">
+                SDN Kuin Utara 7
+            </span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-md mx-auto w-full px-4 py-4 flex-grow">
+
+        <!-- ================= HOME PAGE (BERANDA) ================= -->
+        <section id="page-home" class="space-y-4">
+            
+            <!-- Hero School Banner -->
+            <div class="bg-gradient-to-br from-sky-400 to-teal-500 text-white rounded-3xl p-5 shadow-lg relative overflow-hidden border border-white/20">
+                <div class="relative z-10 space-y-2">
+                    <span class="bg-white/20 text-xs px-3 py-1 rounded-full font-semibold backdrop-blur-md border border-white/30 inline-block">
+                        🏫 SD Negeri Kuin Utara 7 Banjarmasin
+                    </span>
+                    <h2 class="text-2xl font-bold font-heading leading-tight drop-shadow-sm">
+                        Mengenal Hak Anak Indonesia 🇮🇩
+                    </h2>
+                    <p class="text-xs text-sky-100 leading-relaxed font-medium">
+                        Mari belajar bab 3 Pendidikan Pancasila dengan ceria dan mudah! Pilih portal materi atau mulai latihan di bawah ini:
+                    </p>
+                </div>
+                <!-- Background Decorative Circle -->
+                <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+            </div>
+
+            <!-- Portal Menu Cards Grid (Susunan Portal di Beranda) -->
+            <div class="space-y-3">
+                <h3 class="font-heading text-slate-700 font-bold text-sm px-1 flex items-center space-x-2">
+                    <i class="fa-solid fa-compass text-sky-500"></i>
+                    <span>Pilih Portal Pembelajaran:</span>
+                </h3>
+
+                <!-- Portal 1 Card -->
+                <div onclick="openPortal('portal1')" class="bg-white p-4 rounded-2xl border border-sky-100 shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl flex-none group-hover:bg-sky-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-sky-600 uppercase tracking-wider">Portal 1</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-sky-500 transition-colors"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm font-heading">Pengertian & Keppres Hak Anak</h4>
+                        <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">Konvensi Hak Anak & Keppres No. 36 Tahun 1990.</p>
+                    </div>
+                </div>
+
+                <!-- Portal 2 Card -->
+                <div onclick="openPortal('portal2')" class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl flex-none group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Portal 2</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-emerald-500 transition-colors"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm font-heading">Hak Anak di Rumah</h4>
+                        <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">Cerita "Sarapan Arga", Makanan & Kesehatan.</p>
+                    </div>
+                </div>
+
+                <!-- Portal 3 Card -->
+                <div onclick="openPortal('portal3')" class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl flex-none group-hover:bg-indigo-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">Portal 3</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-indigo-500 transition-colors"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm font-heading">Hak Anak di Sekolah</h4>
+                        <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">Fasilitas belajar & perlakuan adil guru.</p>
+                    </div>
+                </div>
+
+                <!-- Portal 4 Card -->
+                <div onclick="openPortal('portal4')" class="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl flex-none group-hover:bg-amber-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-amber-600 uppercase tracking-wider">Portal 4</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-amber-500 transition-colors"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm font-heading">Hak di Lingkungan Masyarakat</h4>
+                        <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">Bermain, rekreasi, dan rasa aman.</p>
+                    </div>
+                </div>
+
+                <!-- Portal 5 Card -->
+                <div onclick="openPortal('portal5')" class="bg-white p-4 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl flex-none group-hover:bg-rose-500 group-hover:text-white transition-colors">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-rose-600 uppercase tracking-wider">Portal 5</span>
+                            <i class="fa-solid fa-chevron-right text-xs text-slate-300 group-hover:text-rose-500 transition-colors"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm font-heading">Wujud Rasa Syukur</h4>
+                        <p class="text-xs text-slate-500 mt-0.5 line-clamp-1">Mengimbangi hak dengan sikap & kewajiban.</p>
+                    </div>
+                </div>
+
+                <!-- Portal 6 Card (Quiz Highlight) -->
+                <div onclick="openPortal('portal6')" class="bg-gradient-to-r from-amber-400 to-amber-500 p-4 rounded-2xl text-amber-950 shadow-md hover:shadow-lg transition-all active:scale-[0.98] cursor-pointer flex items-center space-x-3.5 group border border-amber-300">
+                    <div class="w-12 h-12 rounded-2xl bg-white/30 text-amber-950 flex items-center justify-center text-xl flex-none font-bold">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/40 px-2 py-0.5 rounded-md">Portal 6</span>
+                            <i class="fa-solid fa-arrow-right text-xs text-amber-900 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                        <h4 class="font-bold text-amber-950 text-sm font-heading mt-0.5">Latihan Pemahaman (Kuis)</h4>
+                        <p class="text-xs text-amber-900 font-medium">10 Soal B/S + 5 Soal Menjodohkan!</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= PORTAL DETAILS (DETIL MATERI) ================= -->
+
+        <!-- Navigation Bar Inside Portal Details -->
+        <div id="portal-top-bar" class="hidden mb-4 flex items-center justify-between bg-white p-2.5 rounded-2xl border border-slate-200 shadow-sm">
+            <button onclick="showHome()" class="text-xs font-bold text-slate-600 hover:text-sky-600 flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-sky-50 transition-colors">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Kembali ke Beranda</span>
+            </button>
+            <span id="portal-badge-title" class="text-xs font-bold px-3 py-1 rounded-full bg-sky-100 text-sky-700">
+                Portal 1
+            </span>
+        </div>
+
+        <!-- PORTAL 1: HAK & KEPPRES -->
+        <section id="portal1" class="portal-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-sky-50 to-blue-100 p-4 rounded-2xl border border-sky-200 text-center relative overflow-hidden">
+                <div class="relative z-10">
+                    <!-- SVG Illustration -->
+                    <svg class="w-28 h-28 mx-auto mb-2 bounce-subtle" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="80" fill="#E0F2FE"/>
+                        <path d="M70 120C70 110 80 100 100 100C120 100 130 110 130 120V140H70V120Z" fill="#38BDF8"/>
+                        <circle cx="100" cy="75" r="20" fill="#FCA5A5"/>
+                        <path d="M85 70C85 70 90 65 100 65C110 65 115 70 115 70" stroke="#000" stroke-width="3" stroke-linecap="round"/>
+                        <circle cx="93" cy="73" r="3" fill="#000"/>
+                        <circle cx="107" cy="73" r="3" fill="#000"/>
+                        <path d="M92 85C92 85 96 90 100 90C104 90 108 85 108 85" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M140 70L150 50L160 70" stroke="#F59E0B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="150" cy="45" r="5" fill="#F59E0B"/>
+                    </svg>
+                    <h2 class="text-2xl font-bold text-sky-800 font-heading">Mengenal Hak Anak</h2>
+                    <p class="text-xs text-sky-600 mt-1">Apa itu Hak? Mengapa Setiap Anak Memilikinya?</p>
+                </div>
+            </div>
+
+            <!-- Kartu Materi Pengertian -->
+            <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm space-y-3">
+                <div class="flex items-center space-x-2 text-sky-600 font-bold text-sm">
+                    <i class="fa-solid fa-circle-info text-base"></i>
+                    <span>Apa itu Hak?</span>
+                </div>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    <strong class="text-sky-700">Hak</strong> adalah segala sesuatu yang <strong class="underline decoration-sky-300">harus diterima, didapatkan, atau dinikmati</strong> oleh seseorang sejak lahir ke dunia.
+                </p>
+            </div>
+
+            <!-- Kartu Keppres -->
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 shadow-sm space-y-2">
+                <div class="flex items-center space-x-2 text-amber-700 font-bold text-sm">
+                    <i class="fa-solid fa-scale-balanced text-base"></i>
+                    <span>Landasan Hukum (Keppres)</span>
+                </div>
+                <p class="text-sm text-amber-900 leading-relaxed">
+                    Pemerintah Indonesia melindungi hak anak secara resmi melalui <strong>Keputusan Presiden (Keppres) No. 36 Tahun 1990</strong> tentang Pengesahan Konvensi Hak-Hak Anak.
+                </p>
+                <div class="bg-white/80 p-2.5 rounded-xl text-xs text-amber-800 border border-amber-100 flex items-center space-x-2">
+                    <i class="fa-solid fa-shield-halved text-amber-500 text-lg flex-none"></i>
+                    <span>Setiap anak berhak mendapat <strong>perlindungan, kasih sayang, dan fasilitas</strong> dasar yang layak!</span>
+                </div>
+            </div>
+
+            <!-- Pesan Bijak -->
+            <div class="bg-rose-50 p-4 rounded-2xl border border-rose-100 shadow-sm flex space-x-3 items-start">
+                <div class="p-2 bg-rose-500 text-white rounded-xl flex-none mt-0.5">
+                    <i class="fa-solid fa-heart-circle-exclamation text-base"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-rose-800 text-sm">Ingat Sikap Bijak Ini!</h4>
+                    <p class="text-xs text-rose-700 leading-relaxed mt-1">
+                        Anak <strong>tidak boleh meminta atau menuntut hak secara berlebihan</strong> (seperti memaksa dibelikan barang mahal), karena kemampuan ekonomi setiap orang tua berbeda-beda.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL 2: HAK DI RUMAH -->
+        <section id="portal2" class="portal-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-emerald-50 to-teal-100 p-4 rounded-2xl border border-emerald-200 text-center">
+                <h2 class="text-2xl font-bold text-emerald-800 font-heading">Hak Anak di Rumah</h2>
+                <p class="text-xs text-emerald-600 mt-1">Pemenuhan Hak dalam Lingkungan Keluarga</p>
+            </div>
+
+            <!-- Kisah Sarapan Arga -->
+            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded-full font-semibold">📖 Cerita Edukasi</span>
+                    <span class="text-xs text-slate-400">Hak Makanan Bergizi</span>
+                </div>
+                <h3 class="font-bold text-slate-800 text-base font-heading">"Sarapan untuk Arga"</h3>
+                <!-- SVG Illustration Arga -->
+                <div class="w-full bg-emerald-50 rounded-xl p-3 flex justify-center items-center">
+                    <svg class="w-32 h-24" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="30" y="80" width="140" height="15" rx="4" fill="#D97706"/>
+                        <ellipse cx="100" cy="75" rx="35" ry="10" fill="#E5E7EB"/>
+                        <circle cx="90" cy="72" r="8" fill="#F59E0B"/>
+                        <rect x="105" y="68" width="15" height="8" rx="2" fill="#10B981"/>
+                        <circle cx="60" cy="40" r="15" fill="#FCA5A5"/>
+                        <path d="M50 65C50 55 55 50 60 50C65 50 70 55 70 65V80H50V65Z" fill="#3B82F6"/>
+                    </svg>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Setiap pagi sebelum berangkat sekolah, Ibu selalu menyiapkan sarapan sehat untuk Arga. Sarapan sangat penting agar Arga memiliki <strong>energi, tubuh sehat, dan konsentrasi penuh</strong> untuk menyerap pelajaran di sekolah.
+                </p>
+            </div>
+
+            <!-- Grid Hak-Hak di Rumah -->
+            <div class="grid grid-cols-1 gap-3">
+                <!-- Hak Kesehatan -->
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center text-lg flex-none">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Hak Kesehatan Tubuh</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Saat anak merasa sakit, orang tua berhak merawat dan membawanya memeriksakan diri ke dokter atau Puskesmas.</p>
+                    </div>
+                </div>
+
+                <!-- Hak Identitas -->
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-lg flex-none">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Hak Atas Identitas</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Setiap anak berhak memiliki nama yang baik serta terdaftar secara resmi dalam dokumen <strong>Akta Kelahiran</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Hak Kasih Sayang & Perlindungan -->
+                <div class="bg-white p-3.5 rounded-2xl border border-slate-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-500 flex items-center justify-center text-lg flex-none">
+                        <i class="fa-solid fa-house-heart"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Kasih Sayang & Perlindungan</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Mendapatkan tempat tinggal yang aman, nyaman, serta suasana keluarga yang hangat dan penuh kasih sayang.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL 3: HAK DI SEKOLAH -->
+        <section id="portal3" class="portal-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-100 p-4 rounded-2xl border border-indigo-200 text-center">
+                <h2 class="text-2xl font-bold text-indigo-800 font-heading">Hak Anak di Sekolah</h2>
+                <p class="text-xs text-indigo-600 mt-1">Belajar Bersama Gurumu dengan Nyaman</p>
+            </div>
+
+            <!-- Card 1: Hak Pendidikan -->
+            <div class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="p-3 bg-indigo-500 text-white rounded-xl flex-none">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base font-heading">1. Hak Mendapatkan Pendidikan</h3>
+                        <p class="text-xs text-indigo-600">Fasilitas & Pengajaran Maksimal</p>
+                    </div>
+                </div>
+                <ul class="text-xs text-slate-600 space-y-2 pl-2">
+                    <li class="flex items-center space-x-2">
+                        <i class="fa-solid fa-check text-indigo-500"></i>
+                        <span>Bersekolah dengan suasana tenang dan aman.</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <i class="fa-solid fa-check text-indigo-500"></i>
+                        <span>Menggunakan fasilitas sekolah (Perpustakaan, Kelas, Lapangan).</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <i class="fa-solid fa-check text-indigo-500"></i>
+                        <span>Mendapatkan bimbingan dan keilmuan dari Bapak/Ibu Guru.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2: Perlakuan Adil -->
+            <div class="bg-white p-4 rounded-2xl border border-indigo-100 shadow-sm space-y-3">
+                <div class="flex items-center space-x-3">
+                    <div class="p-3 bg-purple-500 text-white rounded-xl flex-none">
+                        <i class="fa-solid fa-scale-unbalanced-flip text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-base font-heading">2. Hak Perlakuan Adil</h3>
+                        <p class="text-xs text-purple-600">Tanpa Diskriminasi</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                    Setiap murid di sekolah berhak diperlakukan secara adil oleh guru dan warga sekolah tanpa dibeda-bedakan berdasarkan suku, agama, ras, maupun latar belakang keluarga.
+                </p>
+            </div>
+        </section>
+
+        <!-- PORTAL 4: HAK DI MASYARAKAT -->
+        <section id="portal4" class="portal-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-amber-50 to-orange-100 p-4 rounded-2xl border border-amber-200 text-center">
+                <h2 class="text-2xl font-bold text-amber-800 font-heading">Hak di Lingkungan Masyarakat</h2>
+                <p class="text-xs text-amber-600 mt-1">Tumbuh Bersama Teman & Tetangga</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-3">
+                <!-- Hak Bermain & Rekreasi -->
+                <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm space-y-2">
+                    <div class="flex items-center space-x-2 text-orange-600 font-bold text-sm">
+                        <i class="fa-solid fa-gamepad text-lg"></i>
+                        <span>Hak Bermain & Rekreasi</span>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Anak-anak memiliki hak atas waktu istirahat, kesempatan bermain bersama teman sebaya, serta rekreasi di lingkungan pemukiman yang bersih, aman, dan sehat.
+                    </p>
+                </div>
+
+                <!-- Hak Dihargai & Dilindungi -->
+                <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm space-y-2">
+                    <div class="flex items-center space-x-2 text-amber-600 font-bold text-sm">
+                        <i class="fa-solid fa-hands-holding-child text-lg"></i>
+                        <span>Hak Dihargai & Dilindungi</span>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Di tengah masyarakat, anak-anak berhak dihormati keberadaannya serta dilindungi dari berbagai bentuk bahaya, diskriminasi, kejahatan, dan tindak kekerasan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTAL 5: WUJUD RASA SYUKUR -->
+        <section id="portal5" class="portal-content hidden space-y-4">
+            <div class="bg-gradient-to-br from-rose-50 to-pink-100 p-4 rounded-2xl border border-rose-200 text-center">
+                <h2 class="text-2xl font-bold text-rose-800 font-heading">Wujud Rasa Syukur</h2>
+                <p class="text-xs text-rose-600 mt-1">Mengimbangi Hak dengan Sikap & Kewajiban</p>
+            </div>
+
+            <div class="space-y-3">
+                <div class="bg-white p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm flex-none">1</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Menghargai Makanan</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Memakan sarapan atau bekal yang disediakan orang tua dengan senang hati tanpa mencela hidangan.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm flex-none">2</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Bersikap Pengertian</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Tidak memaksa atau menuntut dibelikan barang-barang mahal yang di luar kemampuan orang tua.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm flex-none">3</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Mengucapkan Terima Kasih</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Selalu bersyukur dan berterima kasih atas fasilitas, waktu, dan kasih sayang yang diberikan.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white p-3.5 rounded-2xl border border-rose-100 shadow-sm flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center font-bold text-sm flex-none">4</div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 text-sm">Melaksanakan Kewajiban</h4>
+                        <p class="text-xs text-slate-500 mt-0.5">Rajin belajar, membantu pekerjaan rumah yang mampu dilakukan, serta patuh pada nasihat baik.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PORTAL 6: LATIHAN PEMAHAMAN (KUIS) ================= -->
+        <section id="portal6" class="portal-content hidden space-y-5">
+
+            <!-- Step 1: Form Nama (Initial View) -->
+            <div id="quiz-start-box" class="bg-white p-5 rounded-3xl border border-amber-200 shadow-md text-center space-y-4">
+                <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                    📝
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800 font-heading">Latihan Pemahaman Bab 3</h2>
+                    <p class="text-xs text-slate-500 mt-1">SD Negeri Kuin Utara 7 Banjarmasin</p>
+                </div>
+
+                <div class="text-left space-y-1.5">
+                    <label for="student-name" class="text-xs font-bold text-slate-700">Nama Lengkap Siswa:</label>
+                    <input type="text" id="student-name" placeholder="Contoh: Muhammad Arga Pratama" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm font-medium">
+                    <p id="name-error" class="text-xs text-rose-500 hidden font-medium">⚠️ Tolong masukkan nama lengkapmu terlebih dahulu!</p>
+                </div>
+
+                <button onclick="startQuiz()" class="w-full py-3.5 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-sm shadow-md transition-all active:scale-95 flex items-center justify-center space-x-2">
+                    <span>Mulai Pengerjaan Soal</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Step 2: Quiz Form Container (Hidden initially) -->
+            <div id="quiz-form-container" class="hidden space-y-6">
+
+                <!-- User Info Bar -->
+                <div class="bg-amber-50 border border-amber-200 px-4 py-2.5 rounded-2xl flex justify-between items-center text-xs">
+                    <span class="font-semibold text-amber-900"><i class="fa-solid fa-user-graduate mr-1"></i> <span id="display-student-name">-</span></span>
+                    <span class="bg-amber-200 text-amber-900 px-2 py-0.5 rounded-full font-bold">Bobot: 100 Poin</span>
+                </div>
+
+                <!-- SUB-BAGIAN A: BENAR / SALAH -->
+                <div class="space-y-4">
+                    <div class="bg-sky-500 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-between shadow-sm">
+                        <span>Bagian A: Benar / Salah (60 Poin)</span>
+                        <span>10 Soal</span>
+                    </div>
+
+                    <div id="tf-questions-container" class="space-y-3">
+                        <!-- Questions JS injected here -->
+                    </div>
+                </div>
+
+                <!-- SUB-BAGIAN B: MENJODOHKAN -->
+                <div class="space-y-4 pt-2">
+                    <div class="bg-purple-600 text-white px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider flex items-center justify-between shadow-sm">
+                        <span>Bagian B: Menjodohkan (40 Poin)</span>
+                        <span>5 Pasangan</span>
+                    </div>
+                    <p class="text-xs text-slate-500 bg-purple-50 p-3 rounded-xl border border-purple-100">
+                        💡 <strong>Cara Menjawab:</strong> Ketuk 1 lingkaran angka di sebelah kiri, lalu ketuk 1 lingkaran huruf di sebelah kanan untuk menyambungkannya dengan garis!
+                    </p>
+
+                    <!-- Interactive Canvas Area -->
+                    <div class="relative bg-white border border-slate-200 rounded-2xl p-3 shadow-sm min-h-[380px] overflow-hidden" id="matching-wrapper">
+                        <!-- Canvas overlay for drawing lines -->
+                        <canvas id="match-canvas"></canvas>
+
+                        <div class="grid grid-cols-2 gap-4 relative z-20">
+                            <!-- Left Column (Items) -->
+                            <div class="space-y-4" id="left-column">
+                                <!-- Injected via JS -->
+                            </div>
+
+                            <!-- Right Column (Targets) -->
+                            <div class="space-y-4" id="right-column">
+                                <!-- Injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="resetMatchLines()" class="text-xs text-slate-500 underline flex items-center justify-end w-full space-x-1">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Reset Garis Menjodohkan</span>
+                    </button>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button onclick="submitQuiz()" class="w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl text-base shadow-lg transition-all active:scale-95 flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Kirim Jawaban & Lihat Hasil</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Result & Evaluation Container (Hidden initially) -->
+            <div id="quiz-result-container" class="hidden space-y-5">
+                <!-- Result Score Card -->
+                <div class="bg-gradient-to-b from-sky-500 to-indigo-600 text-white p-6 rounded-3xl text-center space-y-3 shadow-lg relative overflow-hidden">
+                    <span class="text-xs bg-white/20 px-3 py-1 rounded-full uppercase tracking-widest font-semibold">Hasil Latihan Pemahaman</span>
+                    
+                    <div class="py-2">
+                        <div class="text-5xl font-extrabold font-heading tracking-tight" id="final-score">0</div>
+                        <div class="text-xs text-sky-200 mt-1">Total Skor Akhir / 100</div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3 text-xs text-left space-y-1 border border-white/10">
+                        <p><strong>Nama Siswa:</strong> <span id="res-student-name">-</span></p>
+                        <p><strong>Sekolah:</strong> SDN Kuin Utara 7 Banjarmasin</p>
+                        <p><strong>Waktu Selesai:</strong> <span id="res-completion-time">-</span></p>
+                    </div>
+                </div>
+
+                <!-- SCREENSHOT NOTICE BOX -->
+                <div class="bg-amber-50 border-2 border-dashed border-amber-400 p-4 rounded-2xl text-center space-y-2">
+                    <div class="text-amber-600 text-2xl"><i class="fa-solid fa-camera"></i></div>
+                    <h4 class="font-bold text-amber-900 text-sm">PENGUMUMAN PENTING</h4>
+                    <p class="text-xs text-amber-800 leading-relaxed">
+                        Silakan <strong>SCREENSHOT</strong> halaman hasil ini sekarang dan kirimkan bukti foto screenshot ke <strong>WhatsApp Pribadi Guru</strong>!
+                    </p>
+                </div>
+
+                <!-- WhatsApp Quick Action Button -->
+                <button onclick="sendToWhatsApp()" class="w-full py-3.5 bg-green-500 hover:bg-green-600 text-white font-bold rounded-2xl text-sm shadow-md transition-all flex items-center justify-center space-x-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Kirim Hasil via WhatsApp</span>
+                </button>
+
+                <!-- Evaluation / Breakdown (NO Correct Answers Revealed) -->
+                <div class="bg-white p-4 rounded-2xl border border-slate-200 space-y-3">
+                    <h4 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2 flex items-center space-x-2">
+                        <i class="fa-solid fa-magnifying-glass text-sky-500"></i>
+                        <span>Evaluasi Jawaban Siswa</span>
+                    </h4>
+                    <p class="text-xs text-slate-500">
+                        Catatan nomor mana saja yang dijawab kurang tepat untuk dipelajari kembali:
+                    </p>
+
+                    <div id="evaluation-list" class="space-y-2 text-xs">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Restart Button -->
+                <button onclick="restartQuiz()" class="w-full py-3 bg-slate-100 text-slate-600 font-bold rounded-xl text-xs hover:bg-slate-200 transition-all">
+                    Coba Kerjakan Ulang
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-400 mt-6">
+        <p>© 2026 Pendidikan Pancasila Kelas 6 • SD Negeri Kuin Utara 7 Banjarmasin</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Data Soal Benar / Salah
+        const tfQuestions = [
+            { id: 1, text: "Hak adalah sesuatu yang harus diterima oleh setiap anak sejak lahir.", answer: "B" },
+            { id: 2, text: "Indonesia mengesahkan Konvensi Hak Anak melalui Keputusan Presiden Nomor 36 Tahun 1990.", answer: "B" },
+            { id: 3, text: "Seorang anak berhak meminta dibelikan semua mainan mahal tanpa mempedulikan kondisi keuangan orang tuanya.", answer: "S" },
+            { id: 4, text: "Diperiksakan ke dokter saat tubuh terasa sakit merupakan contoh pemenuhan hak atas kesehatan.", answer: "B" },
+            { id: 5, text: "Menurut cerita 'Sarapan untuk Arga', sarapan sangat penting agar tubuh memiliki tenaga dan siap menyerap pelajaran.", answer: "B" },
+            { id: 6, text: "Jika ibu membuatkan makanan yang kurang kita sukai, kita boleh mencela dan marah kepada ibu.", answer: "S" },
+            { id: 7, text: "Bersekolah dan mendapatkan ilmu di kelas merupakan pemenuhan hak anak di lingkungan sekolah.", answer: "B" },
+            { id: 8, text: "Bermain bersama teman-teman saat sore hari merupakan bagian dari hak anak atas kesempatan bermain dan rekreasi.", answer: "B" },
+            { id: 9, text: "Hak dan kewajiban anak harus dilaksanakan secara seimbang.", answer: "B" },
+            { id: 10, text: "Menghabiskan makanan yang disiapkan orang tua dan mengucapkan terima kasih adalah wujud rasa syukur anak.", answer: "B" }
+        ];
+
+        // Data Soal Menjodohkan
+        const matchLeft = [
+            { id: 1, text: "Arga memakan sarapan yang disiapkan Ibu sebelum berangkat sekolah." },
+            { id: 2, text: "Ibu membawa Dito ke Puskesmas saat Dito mengalami demam tinggi." },
+            { id: 3, text: "Siti membaca buku cerita dan belajar di perpustakaan sekolah." },
+            { id: 4, text: "Mengucapkan terima kasih dan tidak menuntut hak secara berlebihan." },
+            { id: 5, text: "Budi dan teman-temannya bermain layang-layang di lapangan desa." }
+        ];
+
+        const matchRight = [
+            { id: 'A', text: "Hak Atas Kesehatan Tubuh" },
+            { id: 'B', text: "Hak Mendapatkan Pendidikan" },
+            { id: 'C', text: "Hak Makanan / Kesehatan" },
+            { id: 'D', text: "Hak Kesempatan Bermain" },
+            { id: 'E', text: "Wujud Rasa Syukur dan Terima Kasih" }
+        ];
+
+        const matchAnswers = {
+            1: 'C',
+            2: 'A',
+            3: 'B',
+            4: 'E',
+            5: 'D'
+        };
+
+        const portalTitles = {
+            'portal1': 'Portal 1: Hak & Keppres',
+            'portal2': 'Portal 2: Hak di Rumah',
+            'portal3': 'Portal 3: Hak di Sekolah',
+            'portal4': 'Portal 4: Hak Masyarakat',
+            'portal5': 'Portal 5: Rasa Syukur',
+            'portal6': 'Portal 6: Kuis Pemahaman'
+        };
+
+        // State Global
+        let studentName = "";
+        let userTfAnswers = {};
+        let userConnections = {}; // Key: left ID, Value: right ID
+        let selectedLeftNode = null;
+        let completionTimestamp = "";
+
+        // Navigation Management
+        function showHome() {
+            document.getElementById('page-home').classList.remove('hidden');
+            document.querySelectorAll('.portal-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('portal-top-bar').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function openPortal(portalId) {
+            document.getElementById('page-home').classList.add('hidden');
+            document.querySelectorAll('.portal-content').forEach(el => el.classList.add('hidden'));
+            
+            const target = document.getElementById(portalId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            const topBar = document.getElementById('portal-top-bar');
+            const titleBadge = document.getElementById('portal-badge-title');
+            topBar.classList.remove('hidden');
+            titleBadge.innerText = portalTitles[portalId] || 'Portal Detail';
+
+            if (portalId === 'portal6' && !document.getElementById('quiz-form-container').classList.contains('hidden')) {
+                setTimeout(drawMatchingLines, 100);
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startQuiz() {
+            const nameInput = document.getElementById('student-name').value.trim();
+            const errorMsg = document.getElementById('name-error');
+
+            if (!nameInput) {
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            studentName = nameInput;
+            document.getElementById('display-student-name').innerText = studentName;
+
+            document.getElementById('quiz-start-box').classList.add('hidden');
+            document.getElementById('quiz-form-container').classList.remove('hidden');
+
+            renderTfQuestions();
+            renderMatchingQuestions();
+            setTimeout(initCanvas, 200);
+        }
+
+        function renderTfQuestions() {
+            const container = document.getElementById('tf-questions-container');
+            container.innerHTML = "";
+
+            tfQuestions.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm space-y-2";
+                card.innerHTML = `
+                    <p class="text-xs text-slate-800 font-semibold leading-relaxed">
+                        <span class="text-sky-600 font-bold">${index + 1}.</span> ${q.text}
+                    </p>
+                    <div class="flex space-x-3 pt-1">
+                        <button type="button" onclick="selectTfAnswer(${q.id}, 'B', this)" class="tf-btn-${q.id} flex-1 py-2 px-3 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-emerald-50 hover:border-emerald-300 transition-all flex items-center justify-center space-x-1">
+                            <span>BENAR</span>
+                        </button>
+                        <button type="button" onclick="selectTfAnswer(${q.id}, 'S', this)" class="tf-btn-${q.id} flex-1 py-2 px-3 rounded-xl border border-slate-200 text-xs font-bold text-slate-600 hover:bg-rose-50 hover:border-rose-300 transition-all flex items-center justify-center space-x-1">
+                            <span>SALAH</span>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function selectTfAnswer(qId, val, btnEl) {
+            userTfAnswers[qId] = val;
+            
+            // Clear siblings styles
+            const buttons = document.querySelectorAll(`.tf-btn-${qId}`);
+            buttons.forEach(b => {
+                b.classList.remove('bg-emerald-500', 'bg-rose-500', 'text-white', 'border-transparent');
+                b.classList.add('border-slate-200', 'text-slate-600');
+            });
+
+            // Set active
+            if (val === 'B') {
+                btnEl.classList.remove('border-slate-200', 'text-slate-600');
+                btnEl.classList.add('bg-emerald-500', 'text-white', 'border-transparent');
+            } else {
+                btnEl.classList.remove('border-slate-200', 'text-slate-600');
+                btnEl.classList.add('bg-rose-500', 'text-white', 'border-transparent');
+            }
+        }
+
+        function renderMatchingQuestions() {
+            const leftCol = document.getElementById('left-column');
+            const rightCol = document.getElementById('right-column');
+
+            leftCol.innerHTML = "";
+            rightCol.innerHTML = "";
+
+            matchLeft.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-xs text-slate-700 relative flex items-center justify-between min-h-[64px]";
+                div.innerHTML = `
+                    <span class="pr-2 leading-tight">${item.id}. ${item.text}</span>
+                    <button id="node-left-${item.id}" onclick="handleLeftClick(${item.id})" class="match-node-left w-7 h-7 rounded-full bg-purple-100 text-purple-700 font-bold border-2 border-purple-400 flex items-center justify-center flex-none shadow-sm transition-transform active:scale-90">
+                        ${item.id}
+                    </button>
+                `;
+                leftCol.appendChild(div);
+            });
+
+            matchRight.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "bg-slate-50 p-2.5 rounded-xl border border-slate-200 text-xs text-slate-700 relative flex items-center justify-between min-h-[64px]";
+                div.innerHTML = `
+                    <button id="node-right-${item.id}" onclick="handleRightClick('${item.id}')" class="match-node-right w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 font-bold border-2 border-indigo-400 flex items-center justify-center flex-none shadow-sm transition-transform active:scale-90">
+                        ${item.id}
+                    </button>
+                    <span class="pl-2 leading-tight text-right flex-grow">${item.text}</span>
+                `;
+                rightCol.appendChild(div);
+            });
+        }
+
+        function handleLeftClick(leftId) {
+            selectedLeftNode = leftId;
+            highlightNodes();
+        }
+
+        function handleRightClick(rightId) {
+            if (selectedLeftNode !== null) {
+                userConnections[selectedLeftNode] = rightId;
+                selectedLeftNode = null;
+                highlightNodes();
+                drawMatchingLines();
+            }
+        }
+
+        function highlightNodes() {
+            // Reset left nodes
+            document.querySelectorAll('.match-node-left').forEach(el => {
+                el.classList.remove('bg-amber-400', 'text-amber-950', 'ring-2', 'ring-amber-300');
+            });
+
+            if (selectedLeftNode !== null) {
+                const selectedEl = document.getElementById(`node-left-${selectedLeftNode}`);
+                if (selectedEl) {
+                    selectedEl.classList.add('bg-amber-400', 'text-amber-950', 'ring-2', 'ring-amber-300');
+                }
+            }
+        }
+
+        function resetMatchLines() {
+            userConnections = {};
+            selectedLeftNode = null;
+            highlightNodes();
+            drawMatchingLines();
+        }
+
+        function initCanvas() {
+            const wrapper = document.getElementById('matching-wrapper');
+            const canvas = document.getElementById('match-canvas');
+            canvas.width = wrapper.clientWidth;
+            canvas.height = wrapper.clientHeight;
+            
+            window.addEventListener('resize', () => {
+                canvas.width = wrapper.clientWidth;
+                canvas.height = wrapper.clientHeight;
+                drawMatchingLines();
+            });
+        }
+
+        function drawMatchingLines() {
+            const canvas = document.getElementById('match-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const wrapperRect = document.getElementById('matching-wrapper').getBoundingClientRect();
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            Object.keys(userConnections).forEach(leftId => {
+                const rightId = userConnections[leftId];
+                const leftEl = document.getElementById(`node-left-${leftId}`);
+                const rightEl = document.getElementById(`node-right-${rightId}`);
+
+                if (leftEl && rightEl) {
+                    const lRect = leftEl.getBoundingClientRect();
+                    const rRect = rightEl.getBoundingClientRect();
+
+                    const x1 = lRect.left + lRect.width / 2 - wrapperRect.left;
+                    const y1 = lRect.top + lRect.height / 2 - wrapperRect.top;
+                    const x2 = rRect.left + rRect.width / 2 - wrapperRect.left;
+                    const y2 = rRect.top + rRect.height / 2 - wrapperRect.top;
+
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    ctx.strokeStyle = '#8B5CF6'; // Purple color
+                    ctx.lineWidth = 3;
+                    ctx.lineCap = 'round';
+                    ctx.stroke();
+                }
+            });
+        }
+
+        function submitQuiz() {
+            // Check if all questions are answered
+            if (Object.keys(userTfAnswers).length < 10) {
+                alert("Mohon jawab seluruh 10 soal Benar/Salah terlebih dahulu!");
+                return;
+            }
+
+            if (Object.keys(userConnections).length < 5) {
+                alert("Mohon hubungkan seluruh 5 pasangan soal Menjodohkan!");
+                return;
+            }
+
+            // Hitung Skor Benar/Salah (Bobot 60%) -> 6 poin per nomor
+            let tfScore = 0;
+            let wrongTfIds = [];
+            tfQuestions.forEach(q => {
+                if (userTfAnswers[q.id] === q.answer) {
+                    tfScore += 6;
+                } else {
+                    wrongTfIds.push(q.id);
+                }
+            });
+
+            // Hitung Skor Menjodohkan (Bobot 40%) -> 8 poin per nomor
+            let matchScore = 0;
+            let wrongMatchIds = [];
+            Object.keys(matchAnswers).forEach(leftId => {
+                if (userConnections[leftId] === matchAnswers[leftId]) {
+                    matchScore += 8;
+                } else {
+                    wrongMatchIds.push(leftId);
+                }
+            });
+
+            const totalScore = tfScore + matchScore;
+
+            // Waktu pengerjaan (Format WITA Banjarmasin)
+            const now = new Date();
+            completionTimestamp = now.toLocaleString('id-ID', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            }) + " WITA";
+
+            // Render Result
+            document.getElementById('final-score').innerText = totalScore;
+            document.getElementById('res-student-name').innerText = studentName;
+            document.getElementById('res-completion-time').innerText = completionTimestamp;
+
+            // Render Evaluasi (TIDAK Menampilkan Jawaban Benar)
+            const evalList = document.getElementById('evaluation-list');
+            evalList.innerHTML = "";
+
+            if (wrongTfIds.length === 0 && wrongMatchIds.length === 0) {
+                evalList.innerHTML = `
+                    <div class="p-3 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-200 font-bold text-center">
+                        🎉 Luar Biasa! Kamu menjawab SEMUA soal dengan benar sempurna!
+                    </div>
+                `;
+            } else {
+                if (wrongTfIds.length > 0) {
+                    const item = document.createElement('div');
+                    item.className = "p-2.5 bg-rose-50 text-rose-800 rounded-xl border border-rose-100";
+                    item.innerHTML = `
+                        <strong>Benar/Salah:</strong> Nomor yang perlu kamu pelajari lagi: 
+                        <span class="font-bold underline">${wrongTfIds.join(', ')}</span>
+                    `;
+                    evalList.appendChild(item);
+                }
+
+                if (wrongMatchIds.length > 0) {
+                    const item = document.createElement('div');
+                    item.className = "p-2.5 bg-purple-50 text-purple-800 rounded-xl border border-purple-100";
+                    item.innerHTML = `
+                        <strong>Menjodohkan:</strong> Pasangan yang kurang tepat: Nomor 
+                        <span class="font-bold underline">${wrongMatchIds.join(', ')}</span>
+                    `;
+                    evalList.appendChild(item);
+                }
+            }
+
+            // Switch view
+            document.getElementById('quiz-form-container').classList.add('hidden');
+            document.getElementById('quiz-result-container').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function sendToWhatsApp() {
+            const score = document.getElementById('final-score').innerText;
+            const text = `Halo Bapak/Ibu Guru, berikut adalah hasil Latihan Pemahaman Pendidikan Pancasila (Bab 3):\n\n` +
+                         `🏫 *Sekolah:* SD Negeri Kuin Utara 7 Banjarmasin\n` +
+                         `👤 *Nama:* ${studentName}\n` +
+                         `💯 *Skor Akhir:* ${score} / 100\n` +
+                         `🕒 *Waktu Selesai:* ${completionTimestamp}\n\n` +
+                         `Saya sudah melakukan screenshot halaman hasil ini. Terima kasih!`;
+
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://api.whatsapp.com/send?text=${encodedText}`, '_blank');
+        }
+
+        function restartQuiz() {
+            userTfAnswers = {};
+            userConnections = {};
+            selectedLeftNode = null;
+
+            document.getElementById('student-name').value = "";
+            document.getElementById('quiz-result-container').classList.add('hidden');
+            document.getElementById('quiz-start-box').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
